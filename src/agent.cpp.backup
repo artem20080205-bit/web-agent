@@ -1,0 +1,448 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
+#include <filesystem>
+#include <regex>
+#include <atomic>
+#include <csignal>
+#include <map>
+
+#ifdef _WIN32
+#include <windows.h>
+#include <direct.h>
+#define popen _popen
+#define pclose _pclose
+#else
+#include <unistd.h>
+#include <sys/wait.h>
+#endif
+
+#define CPPHTTPLIB_OPENSSL_SUPPORT
+#include "httplib.h"
+
+namespace fs = std::filesystem;
+
+// Класс для логирования
+class Logger {
+private:
+    std::ofstream log_file;
+    std::string log_path;
+    
+public:
+    Logger(const std::string& path) : log_path(path) {
+        fs::create_directories(fs::path(path).parent_path());
+        log_file.open(path, std::ios::app);
+    }
+    
+    ~Logger() {
+        if (log_file.is_open()) {
+            log_file.close();
+        }
+    }
+    
+    void log(const std::string& message) {
+        auto now = std::chrono::system_clock::now();
+        auto now_time = std::chrono::system_clock::to_time_t(now);
+        
+        std::string timestamp = std::ctime(&now_time);
+        timestamp.pop_back();
+        
+        std::string log_entry = "[" + timestamp + "] " + message;
+        
+        std::cout << log_entry << std::endl;
+        
+        if (log_file.is_open()) {
+            log_file << log_entry << std::endl;
+            log_file.flush();
+        }
+    }
+};
+
+// Класс конфигурации
+class Config {
+private:
+    std::map<std::string, std::string> values;
+    
+public:
+    bool load(const std::string& filename) {
+        std::ifstream file(filename);
+        if (!file.is_open()) {
+            return false;
+        }
+        
+        std::string line;
+        while (std::getline(file, line)) {
+            if (line.empty() || line[0] == '#') continue;
+            
+            size_t pos = line.find('=');
+            if (pos != std::string::npos) {
+                std::string key = line.substr(0, pos);
+                std::string value = line.substr(pos + 1);
+                
+                key.erase(0, key.find_first_not_of(" \t"));
+                key.erase(key.find_last_not_of(" \t") + 1);
+                value.erase(0, value.find_first_not_of(" \t"));
+                value.erase(value.find_last_not_of(" \t") + 1);
+                
+                values[key] = value;
+            }
+        }
+        
+        return true;
+    }
+    
+    std::string get(const std::string& key, const std::string& default_value = "") {
+        auto it = values.find(key);
+        if (it != values.end()) {
+            return it->second;
+        }
+        return default_value;
+    }
+    
+    int getInt(const std::string& key, int default_value = 0) {
+        std::string val = get(key);
+        if (val.empty()) return default_value;
+        return std::stoi(val);
+    }
+};
+
+// Класс для выполнения команд
+class CommandExecutor {
+public:
+    static std::string execute(const std::string& command, int timeout_seconds, Logger& logger) {
+        logger.log("Выполняю команду: " + command);
+        
+        std::string result;
+        
+#ifdef _WIN32
+        FILE* pipe = _popen(command.c_str(), "r");
+#else
+        FILE* pipe = popen(command.c_str(), "r");
+#endif
+        
+        if (!pipe) {
+            logger.log("ОШИБКА: не удалось запустить команду");
+            return "ERROR: Failed to execute command";
+        }
+        
+        char buffer[128];
+        while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+            result += buffer;
+        }
+        
+#ifdef _WIN32
+        int status = _pclose(pipe);
+#else
+        int status = pclose(pipe);
+#endif
+        
+        if (status != 0) {
+            logger.log("Команда завершилась с кодом: " + std::to_string(status));
+        } else {
+            logger.log("Команда выполнена успешно");
+        }
+        
+        return result;
+    }
+};
+
+// Класс веб-агента
+class WebAgent {
+private:
+    Config config;
+    Logger logger;
+    std::string uid;
+    std::string server_url;
+    int poll_interval;
+    std::string tasks_dir;
+    std::string results_dir;
+    std::string current_session;
+    std::atomic<bool> running;
+    
+public:
+    WebAgent(const std::string& config_file) 
+        : logger("./logs/agent.log"), running(true) {
+        
+        if (!config.load(config_file)) {
+            logger.log("ОШИБКА: не удалось загрузить конфигурацию");
+            throw std::runtime_error("Config load failed");
+        }
+        
+        uid = config.get("uid", "UNKNOWN");
+        server_url = config.get("server_url", "");
+        poll_interval = config.getInt("poll_interval", 10);
+        tasks_dir = config.get("tasks_dir", "./tasks");
+        results_dir = config.get("results_dir", "./results");
+        
+        fs::create_directories(tasks_dir);
+        fs::create_directories(results_dir);
+        fs::create_directories("./logs");
+        
+        logger.log("Веб-агент инициализирован. UID: " + uid);
+        logger.log("Сервер: " + server_url);
+    }
+    
+    void stop() {
+        running = false;
+    }
+    
+    void run() {
+        logger.log("Запуск веб-агента");
+        
+        int fail_count = 0;
+        
+        while (running) {
+            try {
+                if (!checkServer()) {
+                    fail_count++;
+                    int wait_time = poll_interval * (1 + fail_count);
+                    logger.log("Сервер недоступен. Жду " + std::to_string(wait_time) + " сек");
+                    std::this_thread::sleep_for(std::chrono::seconds(wait_time));
+                    continue;
+                }
+                
+                if (!registerAgent()) {
+                    logger.log("Ошибка регистрации на сервере");
+                    std::this_thread::sleep_for(std::chrono::seconds(poll_interval));
+                    continue;
+                }
+                
+                fail_count = 0;
+                
+                Task task = requestTask();
+                
+                if (task.type == "none") {
+                    logger.log("Нет заданий. Жду...");
+                } else {
+                    executeTask(task);
+                    sendResults(task);
+                }
+                
+            } catch (const std::exception& e) {
+                logger.log("Исключение: " + std::string(e.what()));
+            }
+            
+            std::this_thread::sleep_for(std::chrono::seconds(poll_interval));
+        }
+        
+        logger.log("Веб-агент остановлен");
+    }
+    
+private:
+    struct Task {
+        std::string type;
+        std::string command;
+        std::string session_id;
+        std::string data;
+        std::string task_id;
+    };
+    
+    bool checkServer() {
+        try {
+            httplib::Client cli(server_url.c_str());
+            cli.set_connection_timeout(5);
+            
+            auto res = cli.Get("/ping");
+            if (res && res->status == 200) {
+                return true;
+            }
+        } catch (...) {
+            // игнорируем исключения
+        }
+        return false;
+    }
+    
+    bool registerAgent() {
+        httplib::Client cli(server_url.c_str());
+        
+        httplib::Params params;
+        params.emplace("uid", uid);
+        params.emplace("action", "register");
+        
+        auto res = cli.Post("/agent", params);
+        
+        if (res && res->status == 200) {
+            std::string body = res->body;
+            std::regex session_regex("session:([^\\s]+)");
+            std::smatch match;
+            
+            if (std::regex_search(body, match, session_regex)) {
+                current_session = match[1];
+                logger.log("Зарегистрирован. Сессия: " + current_session);
+                return true;
+            }
+        }
+        
+        logger.log("Ошибка регистрации: " + (res ? std::to_string(res->status) : "нет ответа"));
+        return false;
+    }
+    
+    Task requestTask() {
+        Task task;
+        task.type = "none";
+        
+        httplib::Client cli(server_url.c_str());
+        
+        httplib::Params params;
+        params.emplace("uid", uid);
+        params.emplace("session", current_session);
+        params.emplace("action", "get_task");
+        
+        auto res = cli.Post("/agent", params);
+        
+        if (res && res->status == 200) {
+            std::string body = res->body;
+            
+            std::regex type_regex("type:([^\\s]+)");
+            std::regex cmd_regex("command:(.+)");
+            std::regex session_regex("session:([^\\s]+)");
+            std::regex taskid_regex("task_id:([^\\s]+)");
+            
+            std::smatch match;
+            
+            if (std::regex_search(body, match, type_regex)) {
+                task.type = match[1];
+            }
+            
+            if (std::regex_search(body, match, cmd_regex)) {
+                task.command = match[1];
+            }
+            
+            if (std::regex_search(body, match, session_regex)) {
+                task.session_id = match[1];
+            }
+            
+            if (std::regex_search(body, match, taskid_regex)) {
+                task.task_id = match[1];
+            }
+            
+            logger.log("Получено задание: type=" + task.type + 
+                      ", session=" + task.session_id);
+        }
+        
+        return task;
+    }
+    
+    void executeTask(const Task& task) {
+        logger.log("Выполняю задание: " + task.type);
+        
+        if (task.type == "command") {
+            int timeout = config.getInt("task_timeout", 300);
+            std::string output = CommandExecutor::execute(task.command, timeout, logger);
+            
+            std::string result_file = results_dir + "/result_" + task.task_id + ".txt";
+            std::ofstream out(result_file);
+            out << output;
+            out.close();
+            
+            logger.log("Результат сохранен в " + result_file);
+            
+        } else if (task.type == "file") {
+            logger.log("Обработка файлового задания: " + task.data);
+        }
+    }
+    
+    void sendResults(const Task& task) {
+        httplib::Client cli(server_url.c_str());
+        
+        std::vector<std::string> result_files;
+        for (const auto& entry : fs::directory_iterator(results_dir)) {
+            if (entry.path().filename().string().find("result_" + task.task_id) != std::string::npos) {
+                result_files.push_back(entry.path().string());
+            }
+        }
+        
+        if (result_files.empty()) {
+            logger.log("Нет файлов для отправки");
+            return;
+        }
+        
+        for (const auto& file : result_files) {
+            std::ifstream in(file, std::ios::binary);
+            if (in) {
+                std::string content((std::istreambuf_iterator<char>(in)), 
+                                     std::istreambuf_iterator<char>());
+                
+                // Для старой версии httplib используем другой формат
+                httplib::MultipartFormDataItems items;
+                
+                // Добавляем файл
+                httplib::MultipartFormData file_item;
+                file_item.name = "file";
+                file_item.content = content;
+                file_item.filename = fs::path(file).filename().string();
+                file_item.content_type = "application/octet-stream";
+                items.push_back(file_item);
+                
+                // Добавляем метаданные
+                httplib::MultipartFormData session_item;
+                session_item.name = "session";
+                session_item.content = task.session_id;
+                session_item.content_type = "text/plain";
+                items.push_back(session_item);
+                
+                httplib::MultipartFormData uid_item;
+                uid_item.name = "uid";
+                uid_item.content = uid;
+                uid_item.content_type = "text/plain";
+                items.push_back(uid_item);
+                
+                httplib::MultipartFormData task_item;
+                task_item.name = "task_id";
+                task_item.content = task.task_id;
+                task_item.content_type = "text/plain";
+                items.push_back(task_item);
+                
+                auto res = cli.Post("/upload", items);
+                
+                if (res && res->status == 200) {
+                    logger.log("Файл " + file_item.filename + " отправлен");
+                    fs::remove(file);
+                } else {
+                    logger.log("Ошибка отправки файла: " + 
+                              (res ? std::to_string(res->status) : "нет ответа"));
+                }
+            }
+        }
+    }
+};
+
+std::unique_ptr<WebAgent> g_agent;
+
+void signalHandler(int signum) {
+    std::cout << "Получен сигнал " << signum << ", останавливаю агента..." << std::endl;
+    if (g_agent) {
+        g_agent->stop();
+    }
+}
+
+int main(int argc, char* argv[]) {
+    std::cout << "========================================" << std::endl;
+    std::cout << "   Веб-агент v1.0" << std::endl;
+    std::cout << "========================================" << std::endl;
+    
+    std::string config_file = "./config/agent.conf";
+    if (argc > 1) {
+        config_file = argv[1];
+    }
+    
+    signal(SIGINT, signalHandler);
+    signal(SIGTERM, signalHandler);
+    
+    try {
+        WebAgent agent(config_file);
+        g_agent = std::unique_ptr<WebAgent>(&agent);
+        
+        agent.run();
+        
+    } catch (const std::exception& e) {
+        std::cerr << "Критическая ошибка: " << e.what() << std::endl;
+        return 1;
+    }
+    
+    return 0;
+}
