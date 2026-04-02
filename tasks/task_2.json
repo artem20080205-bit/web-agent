@@ -1,6 +1,0 @@
-{
-  "task_id": "2",
-  "type": "execute_program",
-  "program_path": "/usr/bin/python3",
-  "arguments": ["script.py", "--verbose"]
-}

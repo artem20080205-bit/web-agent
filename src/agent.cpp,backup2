@@ -1,0 +1,291 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <thread>
+#include <chrono>
+#include <vector>
+#include <filesystem>
+#include <ctime>
+
+#include "httplib.h"
+#include <nlohmann/json.hpp>
+#include "ini.h"
+
+using json = nlohmann::json;
+
+// Webagent
+
+class WebAgent {
+private:
+    std::string uid;
+    std::string server_uri;
+    std::string access_code;
+
+    std::string tasks_dir;      
+    std::string results_dir;  
+
+    int task_interval;         
+    std::string log_level;
+
+    Client client;  
+
+public:
+    WebAgent(const std::string& config_path);
+
+    void run();
+    void setConfig(const std::string& key, const std::string& value);
+    void log(const std::string& msg, const std::string& level = "info");
+    std::vector<json> readLocalTasks();
+    void executeTask(const json& task);
+    void checkTasks();
+};
+
+// Клиент
+
+class Client {
+private:
+    std::string uid;
+    std::string server_uri;
+    std::string access_code;
+    std::string log_level;
+
+public:
+    Client(const std::string& config_path);
+
+    void setConfig(const std::string& key, const std::string& value);
+    std::vector<json> fetchServerTasks();
+    bool sendResultsToServer(const json& result);
+    void log(const std::string& msg, const std::string& level = "info");
+};
+
+// handler
+
+static int handler(void* user, const char* section, const char* name, const char* value) {
+    if (std::string(section) == "agent") {
+        ((WebAgent*)user)->setConfig(name, value);
+    } else if (std::string(section) == "client") {
+        ((Client*)user)->setConfig(name, value);
+    }
+    return 1;
+}
+
+// CONF client
+
+Client::Client(const std::string &config_path) {
+    if (ini_parse(config_path.c_str(), handler, this) < 0) {
+        std::cerr << "Cannot open config: " << config_path << std::endl;
+        throw std::runtime_error("Config load failed");
+    }
+}
+
+void Client::setConfig(const std::string& key, const std::string& value) {
+    if (key == "uid") uid = value;
+    else if (key == "server_uri") server_uri = value;
+    else if (key == "access_code") access_code = value;
+    else if (key == "log_level") log_level = value;
+}
+
+// CONF Webagent
+
+WebAgent::WebAgent(const std::string& config_path) : client(config_path) {
+    if (ini_parse(config_path.c_str(), handler, this) < 0) {
+        std::cerr << "Cannot open config: " << config_path << std::endl;
+        throw std::runtime_error("Config load failed");
+    }
+
+    if (uid.empty() || server_uri.empty()) {
+        throw std::runtime_error("Invalid config");
+    }
+
+    std::filesystem::create_directories(tasks_dir);
+    std::filesystem::create_directories(results_dir);
+
+    log("Agent initialized", "info");
+    log("UID: " + uid, "debug");
+    log("Server: " + server_uri, "debug");
+}
+
+void WebAgent::setConfig(const std::string& key, const std::string& value) {
+    if (key == "uid") uid = value;
+    else if (key == "server_uri") server_uri = value;
+    else if (key == "access_code") access_code = value;
+    else if (key == "tasks_dir") tasks_dir = value;
+    else if (key == "results_dir") results_dir = value;
+    else if (key == "task_interval") task_interval = std::stoi(value);
+    else if (key == "log_level") log_level = value;
+}
+
+// fetchServerTasks
+
+std::vector<json> Client::fetchServerTasks() {
+    log("Fetching tasks from server...", "debug");
+
+    httplib::Client cli(server_uri);
+    auto res = cli.Get(("/tasks?uid=" + uid).c_str());
+
+    if (!res) {
+        log("Server not responding", "error");
+        return {};
+    }
+
+    log("GET /tasks status: " + std::to_string(res->status), "debug");
+
+    if (res->status != 200) {
+        return {};
+    }
+
+    try {
+        auto arr = json::parse(res->body);
+        log("Received " + std::to_string(arr.size()) + " tasks from server", "info");
+        return arr;
+    } catch (...) {
+        log("Invalid JSON from server", "error");
+        return {};
+    }
+}
+
+// sendResultsToServer
+
+bool Client::sendResultsToServer(const json& result) {
+    log("Sending result to server: " + result.dump(), "debug");
+
+    httplib::Client cli(server_uri);
+
+    httplib::Headers headers = {
+        {"Authorization", access_code}
+    };
+
+    auto res = cli.Post("/results", headers, result.dump(), "application/json");
+
+    if (!res) {
+        log("HTTP failed (no response)", "error");
+        return false;
+    } else if (res->status != 200) {
+        log("HTTP error: " + std::to_string(res->status), "error");
+        return false;
+    }
+
+    log("Result sent successfully", "info");
+    return true;
+}
+
+// log
+
+void Client::log(const std::string& msg, const std::string& level) {
+    std::vector<std::string> levels = {"debug", "info", "error"};
+
+    auto lvl = [&](const std::string& l) {
+        for (int i = 0; i < levels.size(); i++)
+            if (levels[i] == l) return i;
+        return 1;
+    };
+
+    if (lvl(level) < lvl(log_level)) return;
+
+    std::filesystem::create_directories("logs");
+
+    std::time_t now = std::time(nullptr);
+    char buf[64];
+    std::strftime(buf, sizeof(buf), "%F %T", std::localtime(&now));
+
+    std::string line = "[" + std::string(buf) + "] [" + level + "] " + msg;
+
+    std::ofstream f("logs/client.log", std::ios::app);
+    f << line << "\n";
+
+    std::cout << line << std::endl;
+}
+
+
+void WebAgent::log(const std::string& msg, const std::string& level) {
+    std::vector<std::string> levels = {"debug", "info", "error"};
+
+    auto lvl = [&](const std::string& l) {
+        for (int i = 0; i < levels.size(); i++)
+            if (levels[i] == l) return i;
+        return 1;
+    };
+
+    if (lvl(level) < lvl(log_level)) return;
+
+    std::filesystem::create_directories("logs");
+
+    std::time_t now = std::time(nullptr);
+    char buf[64];
+    std::strftime(buf, sizeof(buf), "%F %T", std::localtime(&now));
+
+    std::string line = "[" + std::string(buf) + "] [" + level + "] " + msg;
+
+    std::ofstream f("logs/agent.log", std::ios::app);
+    f << line << "\n";
+
+    std::cout << line << std::endl;
+}
+
+
+// проверить задачу на наличие
+
+void WebAgent::checkTasks() {
+    log("Checking server tasks...", "debug");
+
+    auto server_tasks = client.fetchServerTasks();
+    for (auto& task : server_tasks) {
+        executeTask(task);
+    }
+}
+
+// выполнить задачу
+
+void WebAgent::executeTask(const json& task) {
+    log("Executing task: " + task.dump(), "debug");
+
+    json result = {
+        {"uid", uid},
+        {"task_id", task.value("task_id", "unknown")}
+    };
+
+    try {
+        std::string type = task.at("type");
+
+        if (type == "copy_file") {
+            std::filesystem::copy_file(
+                task.at("source"), task.at("destination"),
+                std::filesystem::copy_options::overwrite_existing
+            );
+            result["status"] = "done";
+        } else {
+            result["status"] = "error";
+            result["msg"] = "unknown task";
+        }
+    } catch (std::exception& e) {
+        result["status"] = "error";
+        result["error"] = e.what();
+    }
+
+    client.sendResultsToServer(result);
+}
+
+// run
+
+void WebAgent::run() {
+    log("Starting agent loop...", "info");
+
+    while (true) {
+        checkTasks();
+        std::this_thread::sleep_for(std::chrono::seconds(task_interval));
+    }
+}
+
+
+
+
+
+int main() {
+    try {
+        WebAgent agent("config/agent.conf");
+        agent.run();
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
+    return 0;
+}

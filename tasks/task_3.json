@@ -1,6 +1,0 @@
-{
-  "task_id": "3",
-  "type": "copy_file",
-  "source": "./results/report.csv",
-  "destination": "/backup/results/"
-}
