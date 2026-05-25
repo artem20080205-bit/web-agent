@@ -4,7 +4,6 @@ project(WebAgent)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ВКЛЮЧАЕМ SSL ДЛЯ HTTPLIB
 add_definitions(-DCPPHTTPLIB_OPENSSL_SUPPORT)
 
 set(SRC

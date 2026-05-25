@@ -120,7 +120,6 @@ bool Client::registerAgent() {
     
     std::string full_url = "https://" + server_host + ":" + std::to_string(server_port);
     httplib::Client cli(full_url);
-    cli.enable_server_certificate_verification(false);
     cli.set_connection_timeout(10, 0);
     cli.set_read_timeout(10, 0);
     
@@ -188,7 +187,6 @@ std::vector<json> Client::fetchServerTasks() {
 
     std::string full_url = "https://" + server_host + ":" + std::to_string(server_port);
     httplib::Client cli(full_url);
-    cli.enable_server_certificate_verification(false);
     cli.set_connection_timeout(10, 0);
     cli.set_read_timeout(10, 0);
     
@@ -262,9 +260,7 @@ std::vector<json> Client::fetchServerTasks() {
 bool Client::sendResultsToServer(const json& result) {
     log("Sending result to server", "debug");
 
-    std::string full_url = "https://" + server_host + ":" + std::to_string(server_port);
-    httplib::Client cli(full_url);
-    cli.enable_server_certificate_verification(false);
+    httplib::Client cli(server_host, server_port);
     cli.set_connection_timeout(10, 0);
     cli.set_read_timeout(10, 0);
     
@@ -272,20 +268,56 @@ bool Client::sendResultsToServer(const json& result) {
     int exit_code = result.value("exit_code", 0);
     std::string message = result.value("msg", result.value("status", "completed"));
     
-    json request = {
-        {"UID", uid},
-        {"access_code", access_code},
-        {"session_id", session_id},
-        {"result_code", std::to_string(exit_code)},
-        {"message", message},
-        {"files", "0"}
+    std::string boundary = "----WebAgentBoundary" + std::to_string(time(nullptr));
+    std::string body;
+    
+    auto add_field = [&](const std::string& name, const std::string& value) {
+        body += "--" + boundary + "\r\n";
+        body += "Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n";
+        body += value + "\r\n";
     };
     
-    std::string url = base_path + "/wa_result/";
-    log("URL: " + url, "debug");
-    log("Request body: " + request.dump(), "debug");
+    add_field("UID", uid);
+    add_field("access_code", access_code);
+    add_field("session_id", session_id);
+    add_field("result_code", std::to_string(exit_code));
+    add_field("message", message);
     
-    auto res = cli.Post(url.c_str(), request.dump(), "application/json");
+    std::vector<std::string> files_to_upload;
+    
+    if (result.contains("file") && !result["file"].get<std::string>().empty()) {
+        files_to_upload.push_back(result["file"].get<std::string>());
+    }
+    
+    add_field("files", std::to_string(files_to_upload.size()));
+    
+    int file_counter = 1;
+    for (const auto& filepath : files_to_upload) {
+        if (!std::filesystem::exists(filepath)) {
+            log("File not found: " + filepath, "error");
+            continue;
+        }
+        
+        std::ifstream file(filepath, std::ios::binary);
+        std::string content((std::istreambuf_iterator<char>(file)),
+                             std::istreambuf_iterator<char>());
+        file.close();
+        
+        std::string filename = std::filesystem::path(filepath).filename().string();
+        std::string field_name = "file" + std::to_string(file_counter++);
+        
+        body += "--" + boundary + "\r\n";
+        body += "Content-Disposition: form-data; name=\"" + field_name + "\"; filename=\"" + filename + "\"\r\n";
+        body += "Content-Type: application/octet-stream\r\n\r\n";
+        body += content + "\r\n";
+        
+        log("Attached file: " + filename, "debug");
+    }
+    
+    body += "--" + boundary + "--\r\n";
+    
+    std::string url = base_path + "/wa_result/";
+    auto res = cli.Post(url.c_str(), body, "multipart/form-data; boundary=" + boundary);
 
     if (!res) {
         log("HTTP failed (no response)", "error");
