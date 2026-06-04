@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/webagent.dir/src/main.cpp.o -o webagent  /usr/lib/x86_64-linux-gnu/libcurl.so -lpthread 

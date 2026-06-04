@@ -1,0 +1,451 @@
+[2026-05-30 18:55:48] [INFO]    Web-Agent v1.0 | UID: agent-002
+[2026-05-30 18:55:48] [INFO]    Server: https://xdev.arkcom.ru:9999/app/webagent1/api
+[2026-05-30 18:55:48] [INFO]    === Web-Agent v1.0 (UID: agent-002) ===
+[2026-05-30 18:55:48] [INFO]    Checking server: https://xdev.arkcom.ru:9999/app/webagent1/api
+[2026-05-30 18:55:48] [INFO]    Server reachable.
+[2026-05-30 18:55:48] [INFO]    Registering at: https://xdev.arkcom.ru:9999/app/webagent1/api/wa_reg/
+[2026-05-30 18:55:49] [DEBUG]   Register [200]: {"code_responce":"0","msg":"Регистрация прошла успешно","access_code":"5558ec-5856-d045-3146-0dcc2aeb"}
+[2026-05-30 18:55:49] [INFO]    Registered. access_code: 5558ec-5856-d045-3146-0dcc2aeb
+[2026-05-30 18:55:49] [DEBUG]   Polling...
+[2026-05-30 18:55:49] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:55:49] [DEBUG]   No task (WAIT)
+[2026-05-30 18:55:59] [DEBUG]   Polling...
+[2026-05-30 18:55:59] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:55:59] [DEBUG]   No task (WAIT)
+[2026-05-30 18:56:09] [DEBUG]   Polling...
+[2026-05-30 18:56:10] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:56:10] [DEBUG]   No task (WAIT)
+[2026-05-30 18:56:20] [DEBUG]   Polling...
+[2026-05-30 18:56:20] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:56:20] [DEBUG]   No task (WAIT)
+[2026-05-30 18:56:30] [DEBUG]   Polling...
+[2026-05-30 18:56:30] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:56:30] [DEBUG]   No task (WAIT)
+[2026-05-30 18:56:40] [DEBUG]   Polling...
+[2026-05-30 18:56:40] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:56:40] [DEBUG]   No task (WAIT)
+[2026-05-30 18:56:50] [DEBUG]   Polling...
+[2026-05-30 18:56:51] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:56:51] [DEBUG]   No task (WAIT)
+[2026-05-30 18:57:01] [DEBUG]   Polling...
+[2026-05-30 18:57:01] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:57:01] [DEBUG]   No task (WAIT)
+[2026-05-30 18:57:11] [DEBUG]   Polling...
+[2026-05-30 18:57:11] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:57:11] [DEBUG]   No task (WAIT)
+[2026-05-30 18:57:21] [DEBUG]   Polling...
+[2026-05-30 18:57:22] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:57:22] [DEBUG]   No task (WAIT)
+[2026-05-30 18:57:32] [DEBUG]   Polling...
+[2026-05-30 18:57:32] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:57:32] [DEBUG]   No task (WAIT)
+[2026-05-30 18:57:42] [DEBUG]   Polling...
+[2026-05-30 18:57:42] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:57:42] [DEBUG]   No task (WAIT)
+[2026-05-30 18:57:52] [DEBUG]   Polling...
+[2026-05-30 18:57:53] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:57:53] [DEBUG]   No task (WAIT)
+[2026-05-30 18:58:03] [DEBUG]   Polling...
+[2026-05-30 18:58:03] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:58:03] [DEBUG]   No task (WAIT)
+[2026-05-30 18:58:13] [DEBUG]   Polling...
+[2026-05-30 18:58:13] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:58:13] [DEBUG]   No task (WAIT)
+[2026-05-30 18:58:23] [DEBUG]   Polling...
+[2026-05-30 18:58:23] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:58:23] [DEBUG]   No task (WAIT)
+[2026-05-30 18:58:33] [DEBUG]   Polling...
+[2026-05-30 18:58:34] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:58:34] [DEBUG]   No task (WAIT)
+[2026-05-30 18:58:44] [DEBUG]   Polling...
+[2026-05-30 18:58:44] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:58:44] [DEBUG]   No task (WAIT)
+[2026-05-30 18:58:54] [DEBUG]   Polling...
+[2026-05-30 18:58:54] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:58:54] [DEBUG]   No task (WAIT)
+[2026-05-30 18:59:04] [DEBUG]   Polling...
+[2026-05-30 18:59:05] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:59:05] [DEBUG]   No task (WAIT)
+[2026-05-30 18:59:15] [DEBUG]   Polling...
+[2026-05-30 18:59:15] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:59:15] [DEBUG]   No task (WAIT)
+[2026-05-30 18:59:25] [DEBUG]   Polling...
+[2026-05-30 18:59:25] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:59:25] [DEBUG]   No task (WAIT)
+[2026-05-30 18:59:35] [DEBUG]   Polling...
+[2026-05-30 18:59:36] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:59:36] [DEBUG]   No task (WAIT)
+[2026-05-30 18:59:46] [DEBUG]   Polling...
+[2026-05-30 18:59:46] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:59:46] [DEBUG]   No task (WAIT)
+[2026-05-30 18:59:56] [DEBUG]   Polling...
+[2026-05-30 18:59:56] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 18:59:56] [DEBUG]   No task (WAIT)
+[2026-05-30 19:00:06] [DEBUG]   Polling...
+[2026-05-30 19:00:06] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:00:06] [DEBUG]   No task (WAIT)
+[2026-05-30 19:00:16] [DEBUG]   Polling...
+[2026-05-30 19:00:17] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:00:17] [DEBUG]   No task (WAIT)
+[2026-05-30 19:00:27] [DEBUG]   Polling...
+[2026-05-30 19:00:27] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:00:27] [DEBUG]   No task (WAIT)
+[2026-05-30 19:00:37] [DEBUG]   Polling...
+[2026-05-30 19:00:37] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:00:37] [DEBUG]   No task (WAIT)
+[2026-05-30 19:00:47] [DEBUG]   Polling...
+[2026-05-30 19:00:48] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:00:48] [DEBUG]   No task (WAIT)
+[2026-05-30 19:00:58] [DEBUG]   Polling...
+[2026-05-30 19:00:58] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:00:58] [DEBUG]   No task (WAIT)
+[2026-05-30 19:01:08] [DEBUG]   Polling...
+[2026-05-30 19:01:08] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:01:08] [DEBUG]   No task (WAIT)
+[2026-05-30 19:01:18] [DEBUG]   Polling...
+[2026-05-30 19:01:19] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:01:19] [DEBUG]   No task (WAIT)
+[2026-05-30 19:01:29] [DEBUG]   Polling...
+[2026-05-30 19:01:29] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:01:29] [DEBUG]   No task (WAIT)
+[2026-05-30 19:01:39] [DEBUG]   Polling...
+[2026-05-30 19:01:39] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:01:39] [DEBUG]   No task (WAIT)
+[2026-05-30 19:01:49] [DEBUG]   Polling...
+[2026-05-30 19:01:49] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:01:49] [DEBUG]   No task (WAIT)
+[2026-05-30 19:01:59] [DEBUG]   Polling...
+[2026-05-30 19:02:00] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:02:00] [DEBUG]   No task (WAIT)
+[2026-05-30 19:02:10] [DEBUG]   Polling...
+[2026-05-30 19:02:10] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:02:10] [DEBUG]   No task (WAIT)
+[2026-05-30 19:03:22] [DEBUG]   Polling...
+[2026-05-30 19:03:22] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:03:22] [DEBUG]   No task (WAIT)
+[2026-05-30 19:03:32] [DEBUG]   Polling...
+[2026-05-30 19:03:33] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:03:33] [DEBUG]   No task (WAIT)
+[2026-05-30 19:03:43] [DEBUG]   Polling...
+[2026-05-30 19:03:43] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:03:43] [DEBUG]   No task (WAIT)
+[2026-05-30 19:03:53] [DEBUG]   Polling...
+[2026-05-30 19:03:53] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:03:53] [DEBUG]   No task (WAIT)
+[2026-05-30 19:04:03] [DEBUG]   Polling...
+[2026-05-30 19:04:04] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:04:04] [DEBUG]   No task (WAIT)
+[2026-05-30 19:04:14] [DEBUG]   Polling...
+[2026-05-30 19:04:14] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:04:14] [DEBUG]   No task (WAIT)
+[2026-05-30 19:04:24] [DEBUG]   Polling...
+[2026-05-30 19:04:24] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:04:24] [DEBUG]   No task (WAIT)
+[2026-05-30 19:04:34] [DEBUG]   Polling...
+[2026-05-30 19:04:35] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:04:35] [DEBUG]   No task (WAIT)
+[2026-05-30 19:04:45] [DEBUG]   Polling...
+[2026-05-30 19:04:45] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:04:45] [DEBUG]   No task (WAIT)
+[2026-05-30 19:04:55] [DEBUG]   Polling...
+[2026-05-30 19:04:55] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:04:55] [DEBUG]   No task (WAIT)
+[2026-05-30 19:05:05] [DEBUG]   Polling...
+[2026-05-30 19:05:06] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:05:06] [DEBUG]   No task (WAIT)
+[2026-05-30 19:05:16] [DEBUG]   Polling...
+[2026-05-30 19:05:16] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:05:16] [DEBUG]   No task (WAIT)
+[2026-05-30 19:05:26] [DEBUG]   Polling...
+[2026-05-30 19:05:26] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:05:26] [DEBUG]   No task (WAIT)
+[2026-05-30 19:05:36] [DEBUG]   Polling...
+[2026-05-30 19:05:36] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:05:36] [DEBUG]   No task (WAIT)
+[2026-05-30 19:05:46] [DEBUG]   Polling...
+[2026-05-30 19:05:47] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:05:47] [DEBUG]   No task (WAIT)
+[2026-05-30 19:05:57] [DEBUG]   Polling...
+[2026-05-30 19:05:57] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:05:57] [DEBUG]   No task (WAIT)
+[2026-05-30 19:06:07] [DEBUG]   Polling...
+[2026-05-30 19:06:07] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:06:07] [DEBUG]   No task (WAIT)
+[2026-05-30 19:06:17] [DEBUG]   Polling...
+[2026-05-30 19:06:18] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:06:18] [DEBUG]   No task (WAIT)
+[2026-05-30 19:06:28] [DEBUG]   Polling...
+[2026-05-30 19:06:28] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:06:28] [DEBUG]   No task (WAIT)
+[2026-05-30 19:06:38] [DEBUG]   Polling...
+[2026-05-30 19:06:38] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:06:38] [DEBUG]   No task (WAIT)
+[2026-05-30 19:06:48] [DEBUG]   Polling...
+[2026-05-30 19:06:49] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:06:49] [DEBUG]   No task (WAIT)
+[2026-05-30 19:06:59] [DEBUG]   Polling...
+[2026-05-30 19:06:59] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:06:59] [DEBUG]   No task (WAIT)
+[2026-05-30 19:07:09] [DEBUG]   Polling...
+[2026-05-30 19:07:09] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:07:09] [DEBUG]   No task (WAIT)
+[2026-05-30 19:07:19] [DEBUG]   Polling...
+[2026-05-30 19:07:19] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:07:19] [DEBUG]   No task (WAIT)
+[2026-05-30 19:08:29] [DEBUG]   Polling...
+[2026-05-30 19:08:29] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:08:29] [DEBUG]   No task (WAIT)
+[2026-05-30 19:08:39] [DEBUG]   Polling...
+[2026-05-30 19:08:39] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:08:39] [DEBUG]   No task (WAIT)
+[2026-05-30 19:08:49] [DEBUG]   Polling...
+[2026-05-30 19:08:50] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:08:50] [DEBUG]   No task (WAIT)
+[2026-05-30 19:09:00] [DEBUG]   Polling...
+[2026-05-30 19:09:00] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:09:00] [DEBUG]   No task (WAIT)
+[2026-05-30 19:09:10] [DEBUG]   Polling...
+[2026-05-30 19:09:10] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:09:10] [DEBUG]   No task (WAIT)
+[2026-05-30 19:09:20] [DEBUG]   Polling...
+[2026-05-30 19:09:21] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:09:21] [DEBUG]   No task (WAIT)
+[2026-05-30 19:09:31] [DEBUG]   Polling...
+[2026-05-30 19:09:31] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:09:31] [DEBUG]   No task (WAIT)
+[2026-05-30 19:09:41] [DEBUG]   Polling...
+[2026-05-30 19:09:41] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:09:41] [DEBUG]   No task (WAIT)
+[2026-05-30 19:09:51] [DEBUG]   Polling...
+[2026-05-30 19:09:51] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:09:51] [DEBUG]   No task (WAIT)
+[2026-05-30 19:10:01] [DEBUG]   Polling...
+[2026-05-30 19:10:02] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"TASK","options":"{\"command\": \"echo Privet_ot_agenta && date && whoami\"}","session_id":"ebmKq4ba-yPaG-mZew-rfEx-qYCLiiHyaJn0","status":"RUN"}
+[2026-05-30 19:10:02] [INFO]    Task: code=TASK session=ebmKq4ba-yPaG-mZew-rfEx-qYCLiiHyaJn0
+[2026-05-30 19:10:02] [INFO]    Executing task: TASK session: ebmKq4ba-yPaG-mZew-rfEx-qYCLiiHyaJn0
+[2026-05-30 19:10:02] [INFO]    Running: echo Privet_ot_agenta && date && whoami
+[2026-05-30 19:10:02] [INFO]    Command finished: OK
+[2026-05-30 19:10:02] [INFO]    Sending result: exit=0 files=1
+[2026-05-30 19:10:02] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:10:02] [INFO]    Result accepted: ok
+[2026-05-30 19:10:12] [DEBUG]   Polling...
+[2026-05-30 19:10:12] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:10:12] [DEBUG]   No task (WAIT)
+[2026-05-30 19:10:22] [DEBUG]   Polling...
+[2026-05-30 19:10:23] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:10:23] [DEBUG]   No task (WAIT)
+[2026-05-30 19:10:33] [DEBUG]   Polling...
+[2026-05-30 19:10:33] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:10:33] [DEBUG]   No task (WAIT)
+[2026-05-30 19:10:43] [DEBUG]   Polling...
+[2026-05-30 19:10:43] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:10:43] [DEBUG]   No task (WAIT)
+[2026-05-30 19:10:53] [DEBUG]   Polling...
+[2026-05-30 19:10:54] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:10:54] [DEBUG]   No task (WAIT)
+[2026-05-30 19:11:04] [DEBUG]   Polling...
+[2026-05-30 19:11:04] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:11:04] [DEBUG]   No task (WAIT)
+[2026-05-30 19:11:14] [DEBUG]   Polling...
+[2026-05-30 19:11:14] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:11:14] [DEBUG]   No task (WAIT)
+[2026-05-30 19:11:24] [DEBUG]   Polling...
+[2026-05-30 19:11:25] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"TIMEOUT","options":"{\"interval\": 5}","session_id":"fXbvzHbW-nhfN-osKd-v0ye-vueavPjWaMoq","status":"RUN"}
+[2026-05-30 19:11:25] [INFO]    Task: code=TIMEOUT session=fXbvzHbW-nhfN-osKd-v0ye-vueavPjWaMoq
+[2026-05-30 19:11:25] [INFO]    Executing task: TIMEOUT session: fXbvzHbW-nhfN-osKd-v0ye-vueavPjWaMoq
+[2026-05-30 19:11:25] [INFO]    Running: TIMEOUT
+[2026-05-30 19:11:25] [INFO]    Command finished: Exit code 32512
+[2026-05-30 19:11:25] [INFO]    Sending result: exit=32512 files=2
+[2026-05-30 19:11:25] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:11:25] [INFO]    Result accepted: ok
+[2026-05-30 19:11:35] [DEBUG]   Polling...
+[2026-05-30 19:11:35] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:11:35] [DEBUG]   No task (WAIT)
+[2026-05-30 19:11:45] [DEBUG]   Polling...
+[2026-05-30 19:11:45] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:11:45] [DEBUG]   No task (WAIT)
+[2026-05-30 19:11:55] [DEBUG]   Polling...
+[2026-05-30 19:11:56] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:11:56] [DEBUG]   No task (WAIT)
+[2026-05-30 19:12:06] [DEBUG]   Polling...
+[2026-05-30 19:12:06] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:12:06] [DEBUG]   No task (WAIT)
+[2026-05-30 19:12:16] [DEBUG]   Polling...
+[2026-05-30 19:12:16] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:12:16] [DEBUG]   No task (WAIT)
+[2026-05-30 19:12:26] [DEBUG]   Polling...
+[2026-05-30 19:12:27] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:12:27] [DEBUG]   No task (WAIT)
+[2026-05-30 19:12:37] [DEBUG]   Polling...
+[2026-05-30 19:12:37] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:12:37] [DEBUG]   No task (WAIT)
+[2026-05-30 19:12:47] [DEBUG]   Polling...
+[2026-05-30 19:12:47] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:12:47] [DEBUG]   No task (WAIT)
+[2026-05-30 19:12:57] [DEBUG]   Polling...
+[2026-05-30 19:12:58] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:12:58] [DEBUG]   No task (WAIT)
+[2026-05-30 19:13:08] [DEBUG]   Polling...
+[2026-05-30 19:13:08] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:13:08] [DEBUG]   No task (WAIT)
+[2026-05-30 19:13:18] [DEBUG]   Polling...
+[2026-05-30 19:13:18] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:13:18] [DEBUG]   No task (WAIT)
+[2026-05-30 19:33:16] [INFO]    Web-Agent v1.0 | UID: agent-002
+[2026-05-30 19:33:16] [INFO]    Server: https://xdev.arkcom.ru:9999/app/webagent1/api
+[2026-05-30 19:33:16] [INFO]    === Web-Agent v1.0 (UID: agent-002) ===
+[2026-05-30 19:33:16] [INFO]    Checking server: https://xdev.arkcom.ru:9999/app/webagent1/api
+[2026-05-30 19:33:17] [INFO]    Server reachable.
+[2026-05-30 19:33:17] [INFO]    Registering at: https://xdev.arkcom.ru:9999/app/webagent1/api/wa_reg/
+[2026-05-30 19:33:17] [DEBUG]   Register [200]: {"code_responce":"-3","msg":"Такой агент уже зарегисирирован"}
+[2026-05-30 19:33:17] [WARNING] Already registered. Using cached access_code.
+[2026-05-30 19:33:17] [DEBUG]   Polling...
+[2026-05-30 19:33:17] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:33:17] [DEBUG]   No task (WAIT)
+[2026-05-30 19:33:27] [DEBUG]   Polling...
+[2026-05-30 19:33:28] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:33:28] [DEBUG]   No task (WAIT)
+[2026-05-30 19:33:38] [DEBUG]   Polling...
+[2026-05-30 19:33:38] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:33:38] [DEBUG]   No task (WAIT)
+[2026-05-30 19:33:48] [DEBUG]   Polling...
+[2026-05-30 19:33:48] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:33:48] [DEBUG]   No task (WAIT)
+[2026-05-30 19:33:58] [DEBUG]   Polling...
+[2026-05-30 19:33:59] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:33:59] [DEBUG]   No task (WAIT)
+[2026-05-30 19:34:09] [DEBUG]   Polling...
+[2026-05-30 19:34:09] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:34:09] [DEBUG]   No task (WAIT)
+[2026-05-30 19:34:19] [DEBUG]   Polling...
+[2026-05-30 19:34:19] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:34:19] [DEBUG]   No task (WAIT)
+[2026-05-30 19:34:29] [DEBUG]   Polling...
+[2026-05-30 19:34:30] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:34:30] [DEBUG]   No task (WAIT)
+[2026-05-30 19:34:40] [DEBUG]   Polling...
+[2026-05-30 19:34:40] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:34:40] [DEBUG]   No task (WAIT)
+[2026-05-30 19:34:50] [DEBUG]   Polling...
+[2026-05-30 19:34:50] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"TIMEOUT","options":"{\"interval\": 5}","session_id":"owAfEqAq-fLG2-gxbX-cvv0-CJjqqfzsaPqg","status":"RUN"}
+[2026-05-30 19:34:50] [INFO]    Task: code=TIMEOUT session=owAfEqAq-fLG2-gxbX-cvv0-CJjqqfzsaPqg
+[2026-05-30 19:34:50] [INFO]    Executing task: TIMEOUT session: owAfEqAq-fLG2-gxbX-cvv0-CJjqqfzsaPqg
+[2026-05-30 19:34:50] [INFO]    Running: TIMEOUT
+[2026-05-30 19:34:50] [INFO]    Command finished: Exit code 32512
+[2026-05-30 19:34:50] [INFO]    Sending result: exit=32512 files=3
+[2026-05-30 19:34:51] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:34:51] [INFO]    Result accepted: ok
+[2026-05-30 19:35:01] [DEBUG]   Polling...
+[2026-05-30 19:35:01] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:35:01] [DEBUG]   No task (WAIT)
+[2026-05-30 19:35:11] [DEBUG]   Polling...
+[2026-05-30 19:35:11] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"TASK","options":"{\"command\": \"echo Privet_ot_agenta && date && whoami\"}","session_id":"b4Igz4nG-odLG-mNfx-a0yr-crfqftGwaZKW","status":"RUN"}
+[2026-05-30 19:35:11] [INFO]    Task: code=TASK session=b4Igz4nG-odLG-mNfx-a0yr-crfqftGwaZKW
+[2026-05-30 19:35:11] [INFO]    Executing task: TASK session: b4Igz4nG-odLG-mNfx-a0yr-crfqftGwaZKW
+[2026-05-30 19:35:11] [INFO]    Running: echo Privet_ot_agenta && date && whoami
+[2026-05-30 19:35:11] [INFO]    Command finished: OK
+[2026-05-30 19:35:11] [INFO]    Sending result: exit=0 files=4
+[2026-05-30 19:35:11] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:35:11] [INFO]    Result accepted: ok
+[2026-05-30 19:35:21] [DEBUG]   Polling...
+[2026-05-30 19:35:22] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:35:22] [DEBUG]   No task (WAIT)
+[2026-05-30 19:35:32] [DEBUG]   Polling...
+[2026-05-30 19:35:32] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"FILE","options":"","session_id":"mHMcbZof-ktku-naLu-f3mb-e3maacjIa4ru","status":"RUN"}
+[2026-05-30 19:35:32] [INFO]    Task: code=FILE session=mHMcbZof-ktku-naLu-f3mb-e3maacjIa4ru
+[2026-05-30 19:35:32] [INFO]    Executing task: FILE session: mHMcbZof-ktku-naLu-f3mb-e3maacjIa4ru
+[2026-05-30 19:35:32] [INFO]    Sending result: exit=0 files=4
+[2026-05-30 19:35:32] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:35:32] [INFO]    Result accepted: ok
+[2026-05-30 19:35:42] [DEBUG]   Polling...
+[2026-05-30 19:35:43] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:35:43] [DEBUG]   No task (WAIT)
+[2026-05-30 19:35:53] [DEBUG]   Polling...
+[2026-05-30 19:35:53] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:35:53] [DEBUG]   No task (WAIT)
+[2026-05-30 19:36:03] [DEBUG]   Polling...
+[2026-05-30 19:36:04] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:36:04] [DEBUG]   No task (WAIT)
+[2026-05-30 19:36:14] [DEBUG]   Polling...
+[2026-05-30 19:36:14] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"CONF","options":"{\"param\": \"descr\", \"value\": \"agent-updated-by-server\"}","session_id":"y1rqHGzG-efos-nXGZ-nbmh-K3zqabuibciK","status":"RUN"}
+[2026-05-30 19:36:14] [INFO]    Task: code=CONF session=y1rqHGzG-efos-nXGZ-nbmh-K3zqabuibciK
+[2026-05-30 19:36:14] [INFO]    Executing task: CONF session: y1rqHGzG-efos-nXGZ-nbmh-K3zqabuibciK
+[2026-05-30 19:36:14] [WARNING] CONF task: no 'command' in options
+[2026-05-30 19:36:14] [INFO]    Sending result: exit=-1 files=0
+[2026-05-30 19:36:14] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:36:14] [INFO]    Result accepted: ok
+[2026-05-30 19:36:24] [DEBUG]   Polling...
+[2026-05-30 19:36:25] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:36:25] [DEBUG]   No task (WAIT)
+[2026-05-30 19:36:35] [DEBUG]   Polling...
+[2026-05-30 19:36:35] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:36:35] [DEBUG]   No task (WAIT)
+[2026-05-30 19:36:45] [DEBUG]   Polling...
+[2026-05-30 19:36:46] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:36:46] [DEBUG]   No task (WAIT)
+[2026-05-30 19:36:56] [DEBUG]   Polling...
+[2026-05-30 19:36:56] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:36:56] [DEBUG]   No task (WAIT)
+[2026-05-30 19:37:06] [DEBUG]   Polling...
+[2026-05-30 19:37:06] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:37:06] [DEBUG]   No task (WAIT)
+[2026-05-30 19:37:16] [DEBUG]   Polling...
+[2026-05-30 19:37:17] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"TASK","options":"{\"command\": \"echo Privet_ot_agenta && date && whoami\"}","session_id":"beiKyua1-wqjy-qjkc-f0yy-nzGafXKsbfja","status":"RUN"}
+[2026-05-30 19:37:17] [INFO]    Task: code=TASK session=beiKyua1-wqjy-qjkc-f0yy-nzGafXKsbfja
+[2026-05-30 19:37:17] [INFO]    Executing task: TASK session: beiKyua1-wqjy-qjkc-f0yy-nzGafXKsbfja
+[2026-05-30 19:37:17] [INFO]    Running: echo Privet_ot_agenta && date && whoami
+[2026-05-30 19:37:17] [INFO]    Command finished: OK
+[2026-05-30 19:37:17] [INFO]    Sending result: exit=0 files=5
+[2026-05-30 19:37:17] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:37:17] [INFO]    Result accepted: ok
+[2026-05-30 19:37:27] [DEBUG]   Polling...
+[2026-05-30 19:37:27] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:37:27] [DEBUG]   No task (WAIT)
+[2026-05-30 19:37:37] [DEBUG]   Polling...
+[2026-05-30 19:37:38] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"CONF","options":"{\"param\": \"descr\", \"value\": \"agent-updated-by-server\"}","session_id":"fPgzqGy1-oivz-qLCh-szKa-yIuLy1yIbjDK","status":"RUN"}
+[2026-05-30 19:37:38] [INFO]    Task: code=CONF session=fPgzqGy1-oivz-qLCh-szKa-yIuLy1yIbjDK
+[2026-05-30 19:37:38] [INFO]    Executing task: CONF session: fPgzqGy1-oivz-qLCh-szKa-yIuLy1yIbjDK
+[2026-05-30 19:37:38] [WARNING] CONF task: no 'command' in options
+[2026-05-30 19:37:38] [INFO]    Sending result: exit=-1 files=0
+[2026-05-30 19:37:38] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:37:38] [INFO]    Result accepted: ok
+[2026-05-30 19:37:48] [DEBUG]   Polling...
+[2026-05-30 19:37:48] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:37:48] [DEBUG]   No task (WAIT)
+[2026-05-30 19:37:58] [DEBUG]   Polling...
+[2026-05-30 19:37:58] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"TIMEOUT","options":"{\"interval\": 1}","session_id":"runjovCq-rLqO-q2iz-i2bi-wdeLbMnsbvbc","status":"RUN"}
+[2026-05-30 19:37:58] [INFO]    Task: code=TIMEOUT session=runjovCq-rLqO-q2iz-i2bi-wdeLbMnsbvbc
+[2026-05-30 19:37:58] [INFO]    Executing task: TIMEOUT session: runjovCq-rLqO-q2iz-i2bi-wdeLbMnsbvbc
+[2026-05-30 19:37:58] [INFO]    Running: TIMEOUT
+[2026-05-30 19:37:59] [INFO]    Command finished: Exit code 32512
+[2026-05-30 19:37:59] [INFO]    Sending result: exit=32512 files=6
+[2026-05-30 19:37:59] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:37:59] [INFO]    Result accepted: ok
+[2026-05-30 19:38:09] [DEBUG]   Polling...
+[2026-05-30 19:38:09] [DEBUG]   Task [200]: {"code_responce":"1","task_code":"FILE","options":"","session_id":"m5jLuvGG-mOev-riCc-izgf-DWmajbkabGmG","status":"RUN"}
+[2026-05-30 19:38:09] [INFO]    Task: code=FILE session=m5jLuvGG-mOev-riCc-izgf-DWmajbkabGmG
+[2026-05-30 19:38:09] [INFO]    Executing task: FILE session: m5jLuvGG-mOev-riCc-izgf-DWmajbkabGmG
+[2026-05-30 19:38:09] [INFO]    Sending result: exit=0 files=6
+[2026-05-30 19:38:09] [DEBUG]   Result response [200]: {"code_responce":"0","msg":"ok"}
+[2026-05-30 19:38:09] [INFO]    Result accepted: ok
+[2026-05-30 19:38:19] [DEBUG]   Polling...
+[2026-05-30 19:38:20] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:38:20] [DEBUG]   No task (WAIT)
+[2026-05-30 19:38:30] [DEBUG]   Polling...
+[2026-05-30 19:38:30] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:38:30] [DEBUG]   No task (WAIT)
+[2026-05-30 19:38:40] [DEBUG]   Polling...
+[2026-05-30 19:38:40] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:38:40] [DEBUG]   No task (WAIT)
+[2026-05-30 19:38:50] [DEBUG]   Polling...
+[2026-05-30 19:38:51] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:38:51] [DEBUG]   No task (WAIT)
+[2026-05-30 19:39:01] [DEBUG]   Polling...
+[2026-05-30 19:39:01] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:39:01] [DEBUG]   No task (WAIT)
+[2026-05-30 19:39:11] [DEBUG]   Polling...
+[2026-05-30 19:39:11] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:39:11] [DEBUG]   No task (WAIT)
+[2026-05-30 19:39:21] [DEBUG]   Polling...
+[2026-05-30 19:39:22] [DEBUG]   Task [200]: {"code_responce":"0","status":"WAIT"}
+[2026-05-30 19:39:22] [DEBUG]   No task (WAIT)

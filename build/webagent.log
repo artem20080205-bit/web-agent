@@ -1,0 +1,9 @@
+[2026-05-30 18:55:03] [INFO]    Web-Agent v1.0 | UID: agent-001
+[2026-05-30 18:55:03] [INFO]    Server: https://xdev.arkcom.ru:9999/app/webagent1/api
+[2026-05-30 18:55:03] [INFO]    === Web-Agent v1.0 (UID: agent-001) ===
+[2026-05-30 18:55:03] [INFO]    Checking server: https://xdev.arkcom.ru:9999/app/webagent1/api
+[2026-05-30 18:55:03] [INFO]    Server reachable.
+[2026-05-30 18:55:03] [INFO]    Registering at: https://xdev.arkcom.ru:9999/app/webagent1/api/wa_reg/
+[2026-05-30 18:55:03] [DEBUG]   Register [200]: {"code_responce":"-3","msg":"Такой агент уже зарегисирирован"}
+[2026-05-30 18:55:03] [WARNING] Already registered. Using cached access_code.
+[2026-05-30 18:55:03] [ERROR]   Registration failed. Exiting.
